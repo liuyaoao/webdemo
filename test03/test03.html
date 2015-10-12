@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width , initial-scale=1.0 , user-scalable=0 , minimum-scale=1.0 , maximum-scale=1.0">
+		<title>HTML template!</title>
+		<link rel="stylesheet" href="../reset.css" />
+		<!-- <link rel="stylesheet" href="test03.css" /> -->
+		<script type="text/javascript" src="../jquery2.1.3.js">
+		</script>
+		<style type="text/css">
+			.randContainer{
+				word-break:break-all;
+				width:800px;
+				height:auto;
+			}
+			.blank10{
+				width:100%;
+				height:10px;
+			}
+		</style>
+		<script type="text/javascript" src="test03.js"></script>
+		
+	</head>
+	<body>
+		<div class="container">
+			<p>hello world !!</p>
+		</div>
+
+		<div class="container">
+			<span class="randContainer">
+				
+			</span>
+			
+		</div>
+		<div class="blank10"></div>
+		<script type="text/javascript">
+			$(document).ready(function (){
+				var randArr = [];
+				for(var i=0;i<100000;i++){
+					randArr.push(Math.random().toString(36).split(".")[1]);
+				}
+
+				for(var i=0;i<randArr.length;i++){
+					var temp = randArr[i];
+					for(var j=i+1;j<randArr.length;j++){
+						if(temp == randArr[j]){
+							randArr[i] = '<span class="repeatNum" style="color:red;">'+temp+'</span>';
+							randArr[j] = '<span class="repeatNum" style="color:red;">'+randArr[j]+'</span>';
+						}
+					}
+				}
+				var randStr = randArr.join(",");
+				$(".randContainer").html(randStr);
+				$(".repeatNum").each(function(){
+					var that = $(this);
+					console.log(that.text());
+				});
+			});
+		</script>
+	</body>
+</html>

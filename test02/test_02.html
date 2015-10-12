@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+	<title>
+	my test html!!!!
+	</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<link type="text/css" rel="stylesheet" href="css/test_02.css"/>
+	<script type="text/javascript" src="../jquery2.1.3.js"></script>
+	<script type="text/javascript" src="js/test_02.js"></script>
+	<style type="text/css">
+		.aa{
+			/*display: inline-block;*/
+			float: left;
+			position: 0,0;
+		}
+	</style>
+	</head>
+	<body>
+	<div>
+	<p>
+	hhhhhhhhhhhhhh
+	</p>
+	<p class="aa">aaaaaaaaaaaaaaaaaa</p>
+	<p class="aa">aaaaaaaaaaaaaaaaaa</p>
+	<p class="aa">aaaaaaaaaaaaaaaaaa</p>
+	<input type="button" id="btntest" value="testbutton"></input>
+	<a href="##" class="aa"><p>clickone</p></a>
+	<a href="##" class="aa"><p>clicktwo</p></a>
+	<a href="##" class="aa"><p>clickthree</p></a>
+	<u>
+		奥利奥<sub>$</sub><sup>*</sup>
+	</u>
+	<hr/>
+	</div>
+	<code>
+		<p>
+			public class StarlingMainEntry extends STLMainClass
+	{
+		[Embed(source="../assets/avatar_view.png")]
+		private static const _avatarViewCls:Class;
+		[Embed(source="../assets/avatar_view.xml", mimeType="application/octet-stream")]
+		private static const _avatarDataCls:Class;
+		
+		private var q:Quad;
+		
+		public function StarlingMainEntry()
+		{
+			addEventListener(Event.ADDED_TO_STAGE, onAdded);
+			
+		}
+		
+		private function initComponent():void{
+			var avatarTexture:Texture = Texture.fromBitmap(new _avatarViewCls());
+			var avatarXml:XML = XML(new _avatarDataCls());
+			var textureAtlas:TextureAtlas = new TextureAtlas(avatarTexture,avatarXml);
+			var frames:Vector.<Texture> = textureAtlas.getTextures("image_");
+			var mcavatar:MovieClip = new MovieClip(frames,20);
+			mcavatar.x = 500;
+//			mcavatar.y = 500;
+			addChild(mcavatar);
+			Starling.juggler.add(mcavatar);
+		}
+		
+		</p>
+	</code>
+	
+	</body>
+	</html>

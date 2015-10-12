@@ -1,0 +1,13 @@
+@import "../bootstrap.min.css";
+@import "helloworld.css";
+
+@nice-blue: #5B86AD;
+@light-blue: @nice-blue + #191;
+@big-font: 30;
+@myWidth: 2px;
+div{
+	border-width:@myWidth;
+	border-style:inset;
+	border-color:@nice-blue;
+	border-bottom-color:@light-blue;
+}

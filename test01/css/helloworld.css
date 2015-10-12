@@ -1,0 +1,29 @@
+div{
+border:2px;
+border-style:outset; /* 定义边框样式，值可为：none,hidden,dotted,dashed, solid,groove,ridge,inset,outset,inherit;*/
+border-color:red;
+
+}
+.canResize
+{
+	resize:both; /*  这是css3的属性，一般作用于div元素，该属性规定是否可由用户调整元素的
+				尺寸，其值可以: none|both|horizontal|vertical;
+			如果希望此属性生效，需要设置元素的 overflow 属性，其值可以是 auto、hidden 或 scroll。*/
+	overflow:auto; /* 这个属性定义溢出元素内容区的内容会如何处理。如果值为 scroll，不论是否需要，
+					用户代理都会提供一种滚动机制。因此，有可能即使元素框中可以放下所有内容也会出现滚动条。*/
+
+}
+.newspaper
+{
+-moz-column-count:3; /* Firefox */
+-webkit-column-count:3; /* Safari and Chrome */
+column-count:3;
+
+-moz-column-gap:40px; /* Firefox */
+-webkit-column-gap:40px; /* Safari and Chrome */
+column-gap:40px;
+
+-moz-column-rule:4px outset #ff0000; /* Firefox */
+-webkit-column-rule:4px outset #ff0000; /* Safari and Chrome */
+column-rule:4px outset #ff0000;
+}
