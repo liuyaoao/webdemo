@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>test复制插件的demo演示</title>
+
+</head>
+<body>
+<script type="text/javascript" src="../../static/jquery2.1.3.js"></script>
+<script type="text/javascript" src="../../static/plugin/zclip/jquery.zclip.js"></script>
+	<br/>
+<script type="text/javascript">
+
+/***   这个复制插件必须要在服务器下才能正常运行。
+1、值得注意的是如果是复制的内容来自输入框input、textarea等，copy对象请使用：
+	如果使用copy: $("#mytext").val();// 这种方式是复制不到内容的。
+
+	copy: function(){
+	    return $('#mytext').val();
+	}
+-----------------------------
+
+2、如果是复制的内容来自页面元素div、p之类的，copy对象可直接使用如下方式， 当然也可使用上面的方式：
+
+	copy: $('#mytext').text(); 或者 copy: $('#mytext').html();
+	.text()方法：只会获取容器里的静态内容，获其他标签内的静态内容，不会获取到容器里输入文本框里的东西。
+	.html()方法：只会获取容器里的静态内容和所有标签，也不会获取到容器里输入文本框里的东西。
+
+
+*/
+$(function(){
+	// 复制动态内容，即可输入文本框里的内容。
+    $('#copy_input').zclip({
+        path: '../../static/plugin/zclip/ZeroClipboard.swf',
+        copy: function(){//复制内容
+            return $('#mytext').val();
+        },
+        beforeCopy: function(){
+        	return false;
+        },
+        afterCopy: function(){//复制成功
+            $('.tip_hint').html('<i>复制成功</i>');
+            setTimeout(function(){ $('.tip_hint').html('') },2000);
+            return false;
+        }
+    });
+
+    //  复制静态内容，即直接写死在标签里的内容，或者是其他标签。不是用于输入。
+    $('#copy_static').zclip({
+    	path: '../../static/plugin/zclip/ZeroClipboard.swf',
+        copy: $('.static_content').html(),
+        beforeCopy: function(){
+        	return false;
+        },
+        afterCopy: function(){//复制成功
+            $('.tip_hint').html('<i>复制成功</i>');
+            setTimeout(function(){ $('.tip_hint').html('') },2000);
+            return false;
+        }
+    });
+});
+</script>
+
+<div>
+    <div class="static_content">
+    	静态内容
+    	<br/>
+    	<span>输入准备复制的内容：</span>
+        <textarea id="mytext" style="width:100%;height:100px;"></textarea>
+    </div>
+
+    <div>
+        <input type="button" id="copy_input" value="复制输入内容" />
+        <input type="button" id="copy_static" value="复制静态内容" />
+    </div>
+    <br/>
+    <div>
+    	<span>可粘贴在下面文本框里：</span><span class="tip_hint" style="color:red;"></span>
+    	<textarea style="width:100%;height:100px;"></textarea>
+    </div>
+</div>
+
+
+</body>
+</html>
