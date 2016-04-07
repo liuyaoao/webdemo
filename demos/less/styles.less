@@ -1,0 +1,37 @@
+@the-border: 1px; //定义变量,LESS 中的变量为完全的 ‘常量’ ，所以只能定义一次.
+@base-color: #333;
+@red:        #842210;
+@width20: 20px;
+
+#header {
+	background-color: @base-color + #009900;	//可以使用运算符改变样式的值
+  	color: @base-color * 3;
+  	border-left: @the-border;
+  	border-right: @the-border * 2;
+}
+#footer { 
+	background-color: @base-color+ #129900;
+  	color: @base-color + #993300;
+  	border-color: desaturate(@red, 10%);
+}
+.baseWidth(@tempWidth:20px,@tempColor:#B996E4){  //可以定义一个函数，通过传值设置不同的样式值
+	background-color:@tempColor;
+	width:@tempWidth;
+}
+.width2{
+	.baseWidth; //调用使用默认值的类函数。其实也可以说是一种简单的继承。
+}
+.width3{
+	.baseWidth(100px, #5AD199);  //直接像函数一样调用，从而改变继承来的样式值。
+}
+.width4{
+	.baseWidth(200px, #AFD949);
+	.width5{  //在一个选择器中嵌套另一个选择器来实现继承，这样很大程度减少了代码量，并且代码看起来更加的清晰
+		background-color:#D8982D;
+		font-size:30px;
+		a{
+			background-color:#EB6BC3;
+			font-size:50px;
+		}
+	}
+}
