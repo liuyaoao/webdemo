@@ -8,12 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 <title>Hello World</title>
-	<!-- <link rel="stylesheet" type="text/css" href="../bootstrap.min.css"></link> -->
-	<!-- <link rel="stylesheet/less" type="text/css" href="css/helloworld.css"></link> -->
-
-	<!-- <link rel="stylesheet/less" type="text/css" href="css/helloworld.less"></link> -->
-	<!-- // <script type="text/javascript" src="js/less.js"></script> -->
-	<script type="text/javascript" src="../moment.js"></script>
+	<script type="text/javascript" src="../static/moment.js"></script>
 
 </head>
 
@@ -66,7 +61,6 @@
 		<div class="backGroudTest">
 			<p>
 			人民网北京2月24日电 (记者 刘阳)国家发展改革委近日发出通知，决定自2月25日零时起将汽、柴油价格每吨分别提高300元和290元，折算到90号汽油和0号柴油（全国平均）每升零售价格分别提高0.22元和0.25元
-			此次国内成品油价格调整幅度，是按照现行国内成品油价格形成机制，根据国际市场油价变化情况确定的。去年11月16日国内成品油价格调整以来，受市场预期欧美经济复苏前景向好以及中东局势持续动荡等因素影响，国际市场原油价格先抑后扬，2月上旬WTI和布伦特原油期货价格再次回升至每桶95美元和115美元以上。虽然近两日价格有所回落，但国内油价挂钩的国际市场三种原油连续22个工作日移动平均价格上涨幅度已超过4%，达到国内成品油价格调整的边界条件。此次国内成品油价格调整幅度，是按照现行国内成品油价格形成机制，根据国际市场油价变化情况确定的。去年11月16日国内成品油价格调整以来，受市场预期欧美经济复苏前景向好以及中东局势持续动荡等因素影响，国际市场原油价格先抑后扬，2月上旬WTI和布伦特原油期货价格再次回升至每桶95美元和115美元以上。虽然近两日价格有所回落，但国内油价挂钩的国际市场三种原油连续22个工作日移动平均价格上涨幅度已超过4%，达到国内成品油价格调整的边界条件。
 			</p>
 		</div>
 		<div>
@@ -87,22 +81,6 @@
 		  <td>31</td>
 		</tr>
 		</table>
-		<ul type="square" class="">
-			<li>number_one</li>
-			<li>number_two
-				<ul>
-					<li>number_one1number_one1number_one1number, _one1number_one1number_one1number_one1</li>
-					<li>nunber_two2number_one1number_one1number ,_one1number_one1number_one1number_one1</li>
-					<li>number_three3number_one1number_one1number_ ,one1number_one1number_one1number_one1</li>
-				</ul>
-			</li>
-			<li>number_three
-				<ol type="A">
-					<li>hahaha_1hahaha_1hahaha_1hahaha_1hahaha_1hahaha_1hahaha_1hahaha_1hahaha_1hahaha_1</li>
-					<li>hahaha_2hahaha_1hahaha_1hahaha_1hahaha_1hahaha_1hahaha_1hahaha_1hahaha_1hahaha_1hahaha_1hahaha_1hahaha_1</li>
-				</ol>
-			</li>
-		</ul>
 	</div>
 	<div class="center_container"><input type="button" class="center-vertical2" value="居中显示"></input></div>
 
@@ -119,16 +97,22 @@
 <a href="/item/3.html" style="width:114px;height:89px;top:86.84375px;left:487px;position:absolute;" target="_blank"></a>
  </div>                        
  </div>
+ <div>
+ 	<input type="text" class="test_keyup" value="测试文本框的按键事件">
+ </div>
 
 
 
 
-	<script type="text/javascript" src="../jquery2.1.3.js"></script>
-	<script type="text/javascript" src="../bootstrap.min.js"></script>
+	<script type="text/javascript" src="../static/jquery2.1.3.js"></script>
 	<script type="text/javascript" src="js/helloworld.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			console.log("hahahaa");
+			$('body').on('keyup', '.test_keyup',function(e){
+				console.log(e);
+				console.log(e.which);
+			});
 		});
 	</script>
 </body>
