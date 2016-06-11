@@ -1,4 +1,5 @@
 $(document).ready(function (){
+	// js的面向对象的测试
 	console.log("hahaha!!!");
 	var Parent = function (){
 		this.name = "liuyaoao";

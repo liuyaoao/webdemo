@@ -12,12 +12,11 @@
 <script type="text/javascript">
 
 /***   这个复制插件必须要在服务器下才能正常运行。
-1、值得注意的是如果是复制的内容来自输入框input、textarea等，copy对象请使用：
+1、值得注意的是如果是复制的内容来自输入框input、textarea等，copy对象请使用如下方式：
+    copy: function(){
+        return $('#mytext').val();
+    }
 	如果使用copy: $("#mytext").val();// 这种方式是复制不到内容的。
-
-	copy: function(){
-	    return $('#mytext').val();
-	}
 -----------------------------
 
 2、如果是复制的内容来自页面元素div、p之类的，copy对象可直接使用如下方式， 当然也可使用上面的方式：
