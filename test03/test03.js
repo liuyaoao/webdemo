@@ -30,4 +30,36 @@ $(document).ready(function (){
 	var _child = new Child();  //总结，要调用原型链中的方法，一定要先new出这个对象的实例。
 	console.log(_child.say());
 	console.log(_child.talkSome()); //返回的是一个undefined类型。
+
+// ===========================================分割线=======================================
+	//简单排序算法分析。
+	var page = {
+		var arr = [];
+		getRandomForM2N:function(m, n){
+			return parseInt(Math.random()*(n-m)+m);
+		},
+		// 插入排序。
+		insertSort:function(arr){ //先把第一个作为有序的，然后再把后面的依次插入前面有序列表的某个位置。
+			for(var i=1;i<arr.length;i++){
+				var key = arr[i];
+				for(var j=i-1;j>=0;j--){
+					if(arr[j] > key){
+						arr[j+1] = arr[j];
+						arr[j] = key;
+					}
+				}
+			}
+			return arr;
+		},
+		// 快速排序。
+		fastSrot:function(arr){
+			
+		}
+	};
+// ===========================================分割线=======================================
+
+	for(var i=0;i<100;i++){
+		arr.push(page.getRandomForM2N(1, 100));
+	}
+
 });
