@@ -2,12 +2,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="HandheldFriendly" content="true">
+        <!-- windows phone 点击无高光 -->
+        <!-- <meta name="msapplication-tap-highlight" content="no"> -->
+        <meta http-equiv="Cache-Control" content="no-cache" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <!-- QQ浏览器私有全屏模式 -->
+        <meta name="x5-fullscreen" content="true">
+        <meta name="full-screen" content="yes">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
 <title>这是我的自定义虚拟主机的主页</title>
-
+<script type="text/javascript" src="./static/jquery2.1.3.js"></script>
+<!-- <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script> -->
 </head>
 
 <body>
-<style type="text/css" contentEditable>
+<style type="text/css">
 		.rolesPanel_0{
 			position:absolute;
 　　		top:10%;
@@ -30,16 +40,111 @@
 		    border: .1rem dotted #96c5fa;
     		border-radius: .1333rem;
 		}
+		.abc{
+			width:100%;
+			height:1000px;
+		}
+		.fixedpanel{
+			position: fixed;
+		    left: 0;
+		    top: 0;
+		    width:100%;
+		    background: green;
+		    opacity: 0.7;
+		}
 	</style>
 	<br/>
+	<div class='fixedpanel'>
+		<div style="text-align: center;">分公司热水</div>
+		<div style="text-align: center;">国防身体认识</div>
+		<div style="text-align: center;">热五谷丰登</div>
+		<div style="text-align: center;">分三个热</div>
+		<div style="text-align: center;">分公司热水</div>
+		<div style="text-align: center;">国防身体认识</div>
+		<div style="text-align: center;">热五谷丰登</div>
+		<div style="text-align: center;">分三个热</div>
+		<div style="text-align: center;width:70%;margin:0 auto;height:100px;overflow-y:auto;background: red;opacity: 0.5;">
+			<p>gfdggfdhgfhgf</p>
+			<p>gfdggfdhgfhgf</p>
+			<p>刚好让他会突然和他认识</p>
+			<p>分手广东佛山过分的事</p>
+			<p>广泛的收入太少忽然特</p>
+			<p>天热今天又惹过热</p>
+			<p>分手广东佛山过分的事</p>
+			<p>广泛的收入太少忽然特</p>
+			<p>天热今天又惹过热</p><p>分手广东佛山过分的事</p>
+			<p>广泛的收入太少忽然特</p>
+			<p>天热今天又惹过热</p>
+			过热和问题认为是
+		</div>
+
+		<div style="text-align: center;">分公司热水</div>
+		<div style="text-align: center;">国防身体认识</div>
+		<div style="text-align: center;">热五谷丰登</div>
+		<div style="text-align: center;">分三个热</div><div style="text-align: center;">分三个热</div>
+		<div style="text-align: center;">分公司热水</div>
+		<div style="text-align: center;">国防身体认识</div>
+		<div style="text-align: center;">热五谷丰登</div>
+		<div style="text-align: center;">分三个热</div>
+	</div>
 <div><h2>这是我的自定义虚拟主机的主页</h2></div>
 
 <div class="rolesPanel">
 	<div style="text-align: center;">活动规则</div>
 	<div>这是我的自定义虚拟主机的主页</div>
 </div>
+<div class='abc'>
+	<div style="">活动规则</div>
+	<div style="">活动规则</div>
+	<div style="">活动规则</div>
+	<div style="">活动规则</div>
+	<!-- <div style="">活动规则</div>
+	<div style="">活动规则</div><div style="">活动规则</div>
+	<div style="">活动规则</div>
+	<div style="">活动规则</div><div style="">活动规则</div>
+	<div style="">活动规则</div>
+	<div style="">活动规则</div><div style="">活动规则</div>
+	<div style="">活动规则</div>
+	<div style="">活动规则</div><div style="">活动规则</div>
+	<div style="">活动规则</div>
+	<div style="">活动规则</div><div style="">活动规则</div>
+	<div style="">活动规则</div>
+	<div style="">活动规则</div><div style="">活动规则</div>
+	
+	
+	<div style="">活动规则</div>
+	<div style="">活动规则</div> -->
+</div>
+
+
 <script type="text/javascript">
 	$(function(){
+		$('body').height(document.documentElement.clientHeight+150);
+		$('.fixedpanel').height(document.documentElement.clientHeight);
+		$(window).resize(function(){
+
+			$('.fixedpanel').height(document.documentElement.clientHeight);
+	      
+	    });
+		scrollTo(0,1);
+		function setFullScreen(element){
+			if(element.requestFullscreen) {
+              element.requestFullscreen();
+            } else if(element.mozRequestFullScreen) {
+              element.mozRequestFullScreen();
+            } else if(element.webkitRequestFullscreen) {
+              element.webkitRequestFullscreen();
+            } else if(element.msRequestFullscreen) {
+              element.msRequestFullscreen();
+            }
+		}
+		$('body').on('click','.rolesPanel',function(){
+			setFullScreen($('.rolesPanel')[0]);
+		});
+		$('body').on('swipeleft',function(){
+			$('.rolesPanel').append('<div>hahahahahhah<div>');
+			setFullScreen(document.documentElement); //document.documentElement
+		});
 		//第一个参数是被克隆的对象，第二个参数是需要克隆的属性列表
 		function cloneOwn() {
 		  var obj = arguments[0];
