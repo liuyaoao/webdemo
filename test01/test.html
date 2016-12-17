@@ -10,17 +10,16 @@
 	//HTML5 Geolocation（地理定位）用于定位用户的位置。
 	var x=document.getElementById("positionInfo");
 	function getLocation(){
-	  if (navigator.geolocation)
-	    {
+	  if (navigator.geolocation){
 	    navigator.geolocation.getCurrentPosition(showPosition);
-	    }
-	  else{x.innerHTML="该浏览器不支持获取地理位置。";}
+	  }else{
+	  	x.innerHTML="该浏览器不支持获取地理位置。";
+	  }
 	}
 	function showPosition(position){
 	  x.innerHTML="Latitude: " + position.coords.latitude +
 	  "<br>Longitude: " + position.coords.longitude;
 	}
-
 
 	$(function(){
     var circle = document.createElement('circle');
