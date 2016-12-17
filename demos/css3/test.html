@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>css3新属性的演示</title>
+</head>
+<body>
+    <style type="text/css">
+        .display-inline-block{display:inline-block;}
+        .halfCircle_up{
+            border:2px solid red;
+            width:200px;height:100px;
+            /* border-radius: 50%/100% 100% 0 0; */
+            border-top-left-radius: 50% 100%;
+            border-top-right-radius: 50% 100%;
+            border-bottom-right-radius: 50% 0px;
+            border-bottom-left-radius: 50% 0px;
+        }
+        .halfCircle_left{
+            border:2px solid red;
+            width:100px;height:200px;
+            /* border-radius: 100%/50% 0 0 50%; */
+            border-top-left-radius: 100% 50%;
+            border-top-right-radius: 0px 50%;
+            border-bottom-right-radius: 0px 50%;
+            border-bottom-left-radius: 100% 50%;
+        }
+        .halfEllipse_up{
+            border:2px solid red;
+            width:200px;height:200px;
+            /* border-radius: 50%/100% 100% 0 0; */
+            border-top-left-radius: 50% 100%;
+            border-top-right-radius: 50% 100%;
+            border-bottom-right-radius: 50% 0px;
+            border-bottom-left-radius: 50% 0px;
+        }
+        .halfEllipse_left{
+            border:2px solid red;
+            width:200px;height:200px;
+            /* border-radius: 100% 0 0 100%/50%; */
+            border-top-left-radius: 100% 50%;
+            border-top-right-radius: 0px 50%;
+            border-bottom-right-radius: 0px 50%;
+            border-bottom-left-radius: 100% 50%;
+        }
+        /*向右的半椭圆*/
+        .halfEllipse_right{  
+            border:2px solid red;
+            width:200px;height:200px;
+            /* border-radius: 100% 0 0 100%/50%; */
+            border-top-left-radius: 0px 50%;
+            border-top-right-radius: 100% 50%;
+            border-bottom-right-radius: 100% 50%;
+            border-bottom-left-radius: 0px 50%;
+        }
+        /*背景图片的相关样式*/
+        .backgroundStyle{
+            width:200px;height:200px;
+            margin:10px;
+            padding:10px;
+            border:10px dotted green;
+            background-image: url(../../images/1.jpg);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            /*这个origin属性表示把背景图片填充在那个盒子中。指定背景图像的位置区域。*/
+            /*可取值：content-box, padding-box,和 border-box区域*/
+            background-origin:border-box;
+            /*上面那个origin属性表示把原图填充到哪个区域，这个clip表示把图片裁剪到那个区域。*/
+            /*就是向现在这样把origin设置为填充到border区域了，但是只裁剪到content区域。*/
+            /*通俗点说就是实际实际填充到了border，但是实际显示时只显示了content区域那一块。*/
+            background-clip:content-box;
+
+        }
+        div.testTextOverflow{
+            white-space:nowrap; 
+            width:12em; 
+            overflow:hidden; 
+            border:1px solid #000000;
+            text-overflow: ellipsis;
+        }
+        .testWord{
+            width:300px;
+            border:1px dotted red;
+
+        }
+        /*过度动画*/
+        .transition_div {
+            width: 100px;
+            height: 100px;
+            background: red;
+            text-align:center;
+            vertical-align: middle;
+            -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* For Safari 3.1 to 6.0 */
+            transition: width 2s, height 2s,background 2s, transform 2s;
+        }
+        .transition_div:hover {
+            width: 200px;
+            height: 200px;
+            background:green;
+            -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+            transform: rotate(360deg);
+        }
+        .transition_div2{
+            transition: width 1s, height 1s,background 1s, transform 1s;
+        }
+        .transition_div2:hover {
+            background:green;
+            -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+            transform: scale(1.5);
+        }
+        /*动画*/
+        /*@keyframes myfirst{
+        from {background: red;width:100px;height:100px;}
+        to {background: yellow;width:150px;height:150px;transform: rotate(360deg);}
+        }
+        @keyframes myfirst{
+        0% {background: red;width:100px;height:100px;}
+        50% {background: yellow;width:150px;height:150px;transform: rotate(180deg);}
+        100% {background: red;width:100px;height:100px;transform: rotate(360deg);}
+        }*/
+        @keyframes myfirst{
+            0% {background: red;width:100px;height:100px;}
+            50% {background: yellow;width:150px;height:150px;transform: rotate(180deg);}
+            100% {background: red;width:100px;height:100px;transform: rotate(360deg);}
+        }
+
+        /* Safari and Chrome */
+        @-webkit-keyframes myfirst {
+            0% {background: red;width:100px;height:100px;}
+            50% {background: yellow;width:150px;height:150px;transform: rotate(180deg);}
+            100% {background: red;width:100px;height:100px;transform: rotate(360deg);}
+        }
+        .animation_div{
+        animation: myfirst 5s linear;
+        animation-iteration-count: infinite; /*规定动画被播放的次数。默认是 1。*/
+        animation-direction: normal;  /*规定动画是否在下一周期逆向地播放。默认是 "normal",alternate:逆向*/
+        /*-webkit-animation: myfirst 5s; */
+        } 
+
+        /*多列样式*/
+        .newspaper{
+            column-count:3;
+            -moz-column-count:3; /* Firefox */
+            -webkit-column-count:3; /* Safari and Chrome */
+            column-gap:40px;
+            column-rule-style: dotted;
+            column-rule-width:2px;
+        }
+        .newspaper h2{
+            column-span:all; /*指定元素跨越多少列*/
+            -webkit-column-span:all; /* Safari and Chrome */
+        }
+
+        /**/
+        .box_container{
+            width:30em;
+            height:60px;
+            border:1px solid;
+        }
+        .box{
+            box-sizing:border-box;
+            -moz-box-sizing:border-box; /* Firefox */
+            width:50%;
+            border:1em solid red;
+            float:left;
+        }
+    </style>
+    <script type="text/javascript" src="../../static/jquery2.1.3.js"></script>
+    <script type="text/javascript">
+        
+    </script>
+
+    <br><br>
+
+    <div style="clear:both;">
+        <!-- 多用strong和em标签表示加粗和斜体字，相比b和i标签更突出样式，前者更突出语义。 -->
+        <strong>我是强调内容！</strong><b>我是强调内容！</b>
+        <b style="font-size:14px;">我是强调内容！</b>
+        <em>我是重点突出内容！</em><i>我是重点突出内容！</i>
+        <br>
+        <div style="font-size:1em;">签更突出样式，前者更突出
+            <div style="font-size:10px;">签更突出样式，前者更突出</div>
+            <div style="font-size:0.5em;">加粗和斜体字，相比</div>
+            <div style="font-size:10px;">股突然好痛感叹号<div style="font-size:1em;">合肥无法范德萨克雷格附近的卡瓦拉热</div></div>
+        </div>
+        <br>
+        <!-- 圆形 -->
+        <div class="display-inline-block" style="border:2px solid red;border-radius:50px;width:100px;height:100px;"></div>
+        <!-- 椭圆形 -->
+        <div class="display-inline-block" style="border:2px solid red;border-radius:100px/50px;width:200px;height:100px;"></div>
+        <!-- 半圆 向上的-->
+        <div class="display-inline-block halfCircle_up"></div>
+        <!-- 半圆 向左的-->
+        <div class="display-inline-block halfCircle_left"></div>
+
+        <!-- 半椭圆 向上的-->
+        <div class="display-inline-block halfEllipse_up"></div>
+        <!-- 半椭圆 向左的-->
+        <div class="display-inline-block halfEllipse_left"></div>
+        <!-- 半椭圆 向右的-->
+        <div class="display-inline-block halfEllipse_right "></div>
+
+        <!-- 盒阴影box-shadow样式-->
+        <!-- box-shadow共五个参数：前两个表示水平和垂直便宜量，第三表示阴影模糊程度，第四个表示阴影的宽度，第五表示阴影颜色。 -->
+        <div class="display-inline-block" style="width:100px;height:100px;background-color:red;box-shadow:-6px 6px 6px 6px blue;"></div>
+
+        <!-- 背景图片的相关样式-->
+        <div class="display-inline-block backgroundStyle"></div>
+
+        <div style="height:20px;"></div>
+        <!-- 文本溢出属性 -->
+        <div class="testTextOverflow">文本溢出属性文本溢出属性文本溢出属性</div>
+
+        <!-- word-wrap:break-word;word-break:break-all;的使用 -->
+        <!-- word-wrap:break-word与word-break:break-all共同点是都能把长单词强行断句，不同点是word-wrap:break-word会首先起一个新行来放置长单词，新的行还是放不下这个长单词则会对长单词进行强制断句；而word-break:break-all则不会把长单词放在一个新行里，当这一行放不下的时候就直接强制断句了。 -->
+        <div class="testWord" style="word-wrap:break-word;">哈哈哈哈   this is a long wordwordwordddddddddddddddddddddddddddddddddd</div>
+        <div class="testWord" style="word-break:break-all;">哈哈哈哈   this is a long wordwordwordddddddddddddddddddddddddddddddddd</div>
+
+        <!-- 2D转换 -->
+        <div class="display-inline-block" style="width:200px;height:100px;text-align:center;background:red;transform:skew(50deg,20deg);">hello world!</div>
+
+
+        <!-- 过渡动画 -->
+        <div class="display-inline-block transition_div">过渡动画的演示；</div>
+        <div class="display-inline-block transition_div2" style="">过渡动画的演示2；</div>
+        <!-- 动画 -->
+        <div class="display-inline-block animation_div">哈哈哈哈哈哈哈哈哈哈哈哈</div>
+        <div class="display-inline-block animation_div3">呵呵呵呵呵呵呵呵</div>
+        <!-- 多列 -->
+        <div class="newspaper">
+            <h2>英国维斯米斯特教堂碑文</h2>
+            当我年轻的时候，我梦想改变这个世界；当我成熟以后，我发现我不能够改变这个世界，我将目光缩短了些，决定只改变我的国家；当我进入暮年以后，我发现我不能够改变我们的国家，我的最后愿望仅仅是改变一下我的家庭，但是，这也不可能。当我现在躺在床上，行将就木时，我突然意识到：如果一开始我仅仅去改变我自己，然后，我可能改变我的家庭；在家人的帮助和鼓励下，我可能为国家做一些事情；然后，谁知道呢?我甚至可能改变这个世界。
+        </div>
+
+        <div style="height:20px;"></div>
+
+        <!--  -->
+        <div class="box_container">
+            <div class="box">这个div占据了左边的一半。</div>
+            <div class="box">这个div占据了右边的一半。</div>
+        </div>
+    </div>
+
+<div style="height:20px;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <style type="text/css">
+        /*利用行高垂直居中。*/
+        .middle-demo-1{
+            background: #aa4562;
+            height: 4em;
+            line-height: 4em;
+            overflow: hidden;
+        } 
+        /*利用display属性的table和table-cell值实现垂直居中*/
+        .wrap{
+            width:300px;
+            height:400px;
+            background: #FFCCFF;
+            display: table;
+
+        }
+        .content{
+            display:table-cell;
+            vertical-align:middle;
+            text-align: center;
+        }
+        /*top和margin-top（其他定位方式也一样）来进行居中的*/
+        .wrap2 {   
+          border:1px solid #FF0099;   
+          background-color:#F1CCFF;   
+          width:260px;   
+          height:300px;   
+          position:relative;   
+        }   
+        .subwrap2 {   
+          position:relative;   
+          border:1px solid #000;   
+          top:50%;   
+          left:50%;   
+          width:200px; 
+          height:200px; 
+          margin-left:-100px;
+          margin-top:-100px;
+        }   
+
+        /*水平居中方法*/
+        .pages{   float: left; position: relative; left: 50% }
+        .pages span{ display:inline-block;width:50px;text-align:center;height:20px;border:1px solid red;float: left; position: relative; left: -50%}
+
+        .importantCss{
+            background-color:blue !important;
+        }
+        .clearfix:after {content:"."; display:block; height:0; visibility:hidden; clear:both; }
+        .clearfix { *zoom:1; } 
+    </style>
+    <!-- 1、/*利用行高垂直居中。*/ -->
+    <div class="middle-demo-1">利用行高垂直居中。</div>
+    <div>
+        <div style="position:absolute;top:0;left:10px;width:150px;height:40px;border:1px dotted blue;"></div>
+    </div>
+
+    <!-- 2、利用padding样式实现水平垂直居中，缺点是不能固定容器的高度。高度要能随内容的增加而扩大。 -->
+    <div style="background:#ff22ff;width:200px;padding:34px;">
+        <div>哈哈哈哈哈哈哈哈哈 </div>
+        <div>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈 </div>
+        <div>哈哈哈哈哈哈哈哈哈 </div>
+    </div>
+
+    <!-- 3、利用display的tabel和table-cell属性垂直居中。 -->
+    <div class="wrap">   
+        <div class="content">  
+            哈哈哈哈哈哈哈哈哈
+            <div>哈哈哈哈哈哈哈哈哈 </div>
+        </div>   
+    </div>
+
+    <!-- 4、这种居中方式是利用top和margin-top（其他定位方式也一样）来进行居中的，前提是必须知道内容容器的高度，因为margin-xx必须设置成容器高度的一半。 -->
+    <!-- margin-xx可以用百分比也可以用像素px。 -->
+    <div class="wrap2">   
+      <div class="subwrap2">   
+        这种居中方式是利用top和margin-top（其他定位方式也一样）来进行居中的，前提是必须知道内容容器的高度，因为margin-xx必须设置成容器高度的一半。margin-xx可以用百分比也可以用像素px。
+      </div>   
+    </div>
+
+    <div style="height:50px;"></div>
+    <!-- 5、利用css3的移位实现水平垂直居中 -->
+    <div style="width:500px;height:400px;background-color:#785985;">
+        <div style="position:relative;left:50%;top:50%;width:90%;background-color:gray;transform:translate(-50%,-50%);"> 
+           <span>5、利用css3的移位实现水平垂直居中</span>
+           <div>5、利用css3的移位实现水平垂直居中</div>
+           <div>5、利用css3的移位实现水平垂直居中</div>
+           <div>5、利用css3的移位实现水平垂直居中</div>
+           <div>5、利用css3的移位实现水平垂直居中</div>
+           <div>韩国当红好感动将覆盖面积涵盖名韩国风格大坏蛋</div>
+        </div>
+    </div>
+    <!-- 固定定位的水平垂直居中现实 -->
+    <div style="position:fixed;left:50%;top:50%;background-color:gray;transform:translate(-50%,-50%);"> 
+       <div>固定定位的水平垂直居中现实</div>
+       <div>固定定位的水平垂直居中现实</div>
+       <div>固定定位的水平垂直居中现实</div>
+       <div>hrdhgd会突然大叫好的很好的很突然华国锋的</div>
+       <div>hrdhgd会突然大叫好的很好的很突然华国锋的</div>
+       <div>hrdhgd会突然大叫好的很好的很突然华国锋的</div>
+       <div>韩国当红好感动将覆盖面积涵盖名韩国风格大坏蛋</div>
+    </div>
+
+    <!-- 仅仅水平居中 -->
+    <div class="pages">
+       <span>首页</span>
+       <span>1</span>
+       <span>2</span>
+       <span>3</span>
+       <span>4</span>
+       <span>尾页</span>
+   </div>
+   <!-- 实现水平居中 -->
+   <div class='clearfix' style="width:100%;position:relative;"><div style="position:relative;left:50%;background:green;width:100px;height:100px;transform:translate(-50%,0);"></div></div>
+   <div class='clearfix' style="width:100%;position:relative;">
+        <div style="">
+            <div style="margin:0 auto;width:0;height:100px;border-left:1px solid blue;"></div>
+            <div style="margin:0 auto;width:100px;height:100px;background:red;"></div>
+        </div>
+    </div>
+   <div class="clearfix"></div>
+
+    <!-- 分三列的自适应布局的几种方法。 -->
+    <!-- 1、自身浮动法： -->
+    <div class="clearfix" style="width:100%; margin:0 auto;"> 
+       <div style="width:20%; float:right; background-color:#960">这是右侧的内容 固定宽度</div>
+       <div style="width:15%; float:left; background:#6FF">这是左侧的内容 固定宽度</div>
+       <div style="margin-left:15%;margin-right:20%; background-color:#9F3">中间内容，自适应宽度</div>
+    </div>
+    <!-- 2、左右栏的margin都取负值法： -->
+    <!-- 2.1:利用浮动法； -->
+    <div class="clearfix" style="width:100%; margin:0 auto;"> 
+        <div style="width:100%; float:left;">
+            <div style="margin:0 200px; background-color:#9F3">中间内容，自适应宽度</div>
+       </div>
+       <div style="width:200px; float:left;margin-left:-100%; background:#6FF">这是左侧的内容 固定宽度</div>
+       <div style="width:200px; float:left;margin-left:-200px; background-color:#960">这是右侧的内容 固定宽度</div>
+    </div>
+    <!-- 2.2:利用绝对定位法； -->
+    <div class="clearfix" style="position:relative;width:100%; margin:0 auto;"> 
+       <div style="width:15%; position:absolute;top:0;left:0;background:#6FF">这是左侧的内容 固定宽度</div>
+       <div style="margin-left:15%;margin-right:20%; background-color:#9F3">中间内容，自适应宽度</div>
+       <div style="width:20%;position:absolute;top:0;right:0; background-color:#960">这是右侧的内容 固定宽度</div>
+    </div>
+
+
+    <!-- !important 定义样式的优先级的 -->
+    <div class="importantCss" style="width:100px;height:100px;background-color:red;"></div>
+
+    <!-- 清除浮动的几种方法 -->
+    <!-- 1、利用:after伪元素法清除浮动。 -->
+    <div class="clearfix" style="padding:10px;border:1px solid;border-radius:5px;" >
+        <div style="float:left;width:100px;height:30px;background:orange;"></div>
+        <div style="float:left;width:100px;height:30px;background:green;"></div>
+        <div style="float:left;width:100px;height:30px;background:blue;"></div>
+        <div style="float:right;width:100px;height:30px;background:orange;"></div>
+        <!-- 2、在最后一个浮动的元素后面加上一个空的div并设置clear:both;样式。 -->
+        <!-- <div style="clear:both;"></div> -->
+    </div>
+    <!-- 3、给父元素添加overflow:hidden属性，也可清除浮动。 -->
+    <div class="" style="overflow:hidden;padding:10px;border:1px solid;border-radius:5px;" >
+        <div style="float:left;width:100px;height:30px;background:orange;"></div>
+        <div style="float:left;width:100px;height:30px;background:green;"></div>
+        <div style="float:left;width:100px;height:30px;background:blue;"></div>
+        <div style="float:right;width:100px;height:30px;background:orange;"></div>
+    </div>
+        <div style="width:360px;height:60px;background:gray;"></div>
+
+    <!-- 利用css绘制三角形 -->
+    <style type="text/css">
+        .test_triangle_border{
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 5px;
+            border-top: 8px solid #69396f;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+        }
+    </style>
+    <div class="test_triangle_border" style=""></div>
+
+    <!--  -->
+    <div style="width:100px;height:100px;position:fixed;border:1px solid red;background:green;">1234567890</div>
+</body>
+</html>
