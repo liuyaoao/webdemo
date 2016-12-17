@@ -1,16 +1,196 @@
 <!DOCTYPE html>
 <html>
 <head>
-       <title>test10</title>
-       <meta http-equiv="content-Type" content="text/html;charset=utf-8"> 
+       <title>test10_HTML5新属性</title>
+       <meta http-equiv="content-Type" content="text/html;charset=utf-8">
 </head>
 <body>
 <script type="text/javascript" src="../static/jquery2.1.3.js"></script>
 <script type="text/javascript">
-$(function(){
+	//HTML5 Geolocation（地理定位）用于定位用户的位置。
+	var x=document.getElementById("positionInfo");
+	function getLocation(){
+	  if (navigator.geolocation)
+	    {
+	    navigator.geolocation.getCurrentPosition(showPosition);
+	    }
+	  else{x.innerHTML="该浏览器不支持获取地理位置。";}
+	}
+	function showPosition(position){
+	  x.innerHTML="Latitude: " + position.coords.latitude +
+	  "<br>Longitude: " + position.coords.longitude;
+	}
 
-});
+
+	$(function(){
+    var circle = document.createElement('circle');
+    circle.cx = 10;
+    circle.cy = 10;
+    circle.r = 7;
+    circle.fill = 'green';
+    setTimeout(function(){
+      var svg00Html = document.getElementById("svg00").getSVGDocument();
+      var svg00Html2 = document.getElementById("svg00").contentDocument;
+      console.log("svg00Html:-------->",svg00Html);
+      console.log("svg00Html2:-------->",svg00Html2);
+    },10);
+
+
+	});
 </script>
-	<div>这是一个test页面。。。。。</div>
+	<!-- HTML5 Geolocation（地理定位）用于定位用户的位置。 -->
+	<div id="positionInfo"></div>
+	<button onclick="getLocation()">点我</button>
+
+	<!-- HTML5引入了<figure>元素。当和<figcaption>结合起来后，我们可以语义化地将注释和相应的图片联系起来。 -->
+	<figure>
+		<img src="1.jpg" alt="About image" />
+		<!-- 用来注释图片信息的 -->
+		<figcaption>
+			<p>This is an image of something interesting. </p>
+		</figcaption>
+	</figure>
+	<!-- data属性用来存放一些数据存到元素中。 -->
+	<div id="myDiv" data-custom="My Value" > Bla Bla </div>
+
+	<!-- 各浏览器有差异，chrome下列表的value值显示在前面label的值显示在后面，而在firefox中只显示label的值，除非label为空才显示value的值。 -->
+	<!-- 还有一个特点：这个是支持搜索的，但是不是所有字符的模糊匹配，它是首先从第一个字符开始匹配的。 -->
+	<!-- http://www.zhangxinxu.com/wordpress/2013/03/html5-datalist-%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8-%E5%8F%AF%E8%A1%8C%E6%80%A7/ -->
+	<!-- http://www.studyofnet.com/news/333.html -->
+	列表：<input type="text" list="mydata" placeholder="热门电影排行" />
+	<datalist id="mydata">
+	    <option label="Top1" value="让子弹飞">
+	    <option label="Top2" value="非诚勿扰2">
+	    <option label="Top3" value="大笑江湖">
+	    <option label="Top4" value="赵氏孤儿">
+	    <option label="Top5" value="初恋这件小事">
+	</datalist>
+
+	<!-- 使用svg画一个圆形。 -->
+	<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+	  <circle cx="100" cy="50" r="40" stroke="black"
+	  stroke-width="2" fill="red" />
+	</svg>
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+        <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)" />
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+    <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:rgb(255,255,255);
+      stop-opacity:0" />
+      <stop offset="100%" style="stop-color:rgb(0,0,255);stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)" />
+</svg>
+
+<embed id="svg01" src="svg01.svg" type="image/svg+xml" />
+<embed id="svg00" src="svg00.svg" type="image/svg+xml" />
+
+<embed id="svg00" src="1.3.6.1.4.1.9.1.563-C3560X确定.svg" type="image/svg+xml" />
+<embed id="svg00" src="cisco C6509E绑定204个口-ok.svg" type="image/svg+xml" />
+<embed id="svg00" src="1.3.6.1.4.1.9.1.10.svg" type="image/svg+xml" />
+
+	<!-- 书写数学表达式的标签。HTML5 可以在文档中使用 MathML 元素，对应的标签是 <math>...</math> -->
+	<!-- MathML是数学标记语言，是一种基于XML（标准通用标记语言的子集）的标准，用来在互联网上书写数学符号和公式的置标语言。 -->
+	<math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mrow>
+            <mtext selected="true">f</mtext>
+            <mtext>(</mtext>
+            <mtext>x</mtext>
+            <mtext>)</mtext>
+            <mo>=</mo>
+            <mtext>sin</mtext>
+            <mtext>&theta;</mtext>
+            <mo>=</mo>
+            <mtext>sin</mtext>
+            <mtext>&theta;</mtext>
+            <mo>+</mo>
+            <mtext>2</mtext>
+            <mtext>k</mtext>
+            <mtext>&pgr;</mtext>
+        </mrow>
+	</math>
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+         <mrow>
+            <msup><mi>a</mi><mn>2</mn></msup>
+            <mo>+</mo>
+            <msup><mi>b</mi><mn>2</mn></msup>
+            <mo>=</mo>
+            <msup><mi>c</mi><mn>2</mn></msup>
+         </mrow>
+      </math>
+
+	<!-- HTML5 新的 Input 类型 -->
+	<div>
+		选择你喜欢的颜色: <input type="color" name="favcolor">
+		生日: <input type="date" name="bday">
+		生日 (日期和时间): <input type="datetime" name="bdaytime">
+		生日 (日期和时间,无时区): <input type="datetime-local" name="bdaytime">
+		生日 (月和年,无时区): <input type="month" name="bdaymonth">
+		<br>
+		<div style="height:10px;"></div>
+		E-mail: <input type="email" name="email">
+		定义一个数值输入域(限定):数量 ( 1 到 5 之间 ): <input type="number" name="quantity" min="1" max="5">
+
+		<!-- 可以创建一个滑动条用于输入确定范围的数值。不过很简单，还要自己写个事件监听显示当前是什么数值 -->
+		定义一个不需要非常精确的数值（类似于滑块控制）:<input type="range" name="range" min="0" max="10" step="1" value="5">
+
+		<!-- search 类型用于搜索域，比如站点搜索或 Google 搜索。 -->
+		Search Google: <input type="search" name="googlesearch">
+
+		<div style="height:10px;"></div>
+		<!-- 定义输入电话号码字段: -->
+		电话号码: <input type="tel" name="usrtel">
+
+		<!-- 定义可输入时间控制器（无时区）： -->
+		选择时间: <input type="time" name="usr_time">
+
+		<!-- url 类型用于应该包含 URL 地址的输入域。 -->
+		添加您的主页: <input type="url" name="homepage">
+	</div>
+
+	<!-- <output> 元素用于不同类型的输出，比如计算或脚本输出： -->
+	<form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
+		<input type="range" id="a" value="50">100 +
+		<input type="number" id="b" value="50">=
+		<output name="x" for="a b"></output>
+	</form>
+
+	<!-- <nav> 标签定义导航链接的部分。 -->
+	<!-- <nav> 元素用于定义页面的导航链接部分区域，但是，不是所有的链接都需要包含在 <nav> 元素中!  -->
+	<nav>
+		<a href="/html/">HTML</a> |
+		<a href="/css/">CSS</a> |
+		<a href="/js/">JavaScript</a> |
+		<a href="/jquery/">jQuery</a>
+	</nav>
+
+	<!--  -->
+<div class="" style="overflow:hidden;width:44px;height:auto;">
+  <span style="width:0;height:0;border-style=solid;border-width:10px 10px 0 10px;border-color:#57af1a #fff #fff #fff;"></span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

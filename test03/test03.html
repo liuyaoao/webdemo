@@ -6,7 +6,7 @@
 		<title>生成随机数</title>
 		<link rel="stylesheet" href="../reset.css" />
 		<!-- <link rel="stylesheet" href="test03.css" /> -->
-		<script type="text/javascript" src="../jquery2.1.3.js">
+		<script type="text/javascript" src="../static/jquery2.1.3.js">
 		</script>
 		<style type="text/css">
 			.randContainer{
@@ -19,14 +19,21 @@
 				height:10px;
 			}
 		</style>
-		<script type="text/javascript" src="test03.js"></script>
-		
 	</head>
 	<body>
 		<div class="container">
 			<p>hello world !!</p>
+			<select multiple="true">
+				<option value="1">1234556</option>
+				<option value="2">1556</option>
+				<option value="3">yur556</option>
+				<option value="4">u1r5io6</option>
+			</select>
+			<select><option value="245">123455769856</option></select>
+			<textarea></textarea>
+			<textarea></textarea>
+			<div><span>hello</span><sub>23</sub></div>
 		</div>
-
 		<div class="container">
 			<span class="randContainer">
 			</span>
@@ -34,8 +41,9 @@
 		<div class="blank10"></div>
 		<script type="text/javascript">
 			$(document).ready(function (){
+				function ffff(){abcde=2345;}
 				var randArr = [];
-				for(var i=0;i<100000;i++){
+				for(var i=0;i<100;i++){
 					randArr.push(Math.random().toString(36).split(".")[1]);
 				}
 
@@ -56,5 +64,6 @@
 				});
 			});
 		</script>
+		<script type="text/javascript" src="test03.js"></script>
 	</body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-       <title>test10</title>
+       <title>zclip复制插件的使用</title>
        <meta http-equiv="content-Type" content="text/html;charset=utf-8"> 
 </head>
 <body>
@@ -9,6 +9,33 @@
 <script type="text/javascript" src="./jquery.zclip.js"></script>
 <script type="text/javascript">
 $(function(){
+	/*
+	配置说明:
+		path:swf的路径(复制主要是用flash解决不同浏览器的复制)
+		copy:待复制的内容, 可以是静态内容, 也可以 return 动态内容
+		beforeCopy:复制之前要做的function;
+		afterCopy:复制之后要做的function;
+		
+	提供了3个方法:
+		show:$(selected).zclip('show');//复制功能有效
+		hide:$(selected).zclip('hide');//复制功能无效
+		remove:$(selected).zclip('remove');//完全移除复制功能
+	*/
+	
+	/***   这个复制插件必须要在服务器下才能正常运行。
+	1、值得注意的是如果是复制的内容来自输入框input、textarea等，copy对象请使用如下方式：
+	    copy: function(){
+	        return $('#mytext').val();
+	    }
+		如果使用copy: $("#mytext").val();// 这种方式是复制不到内容的。
+	-----------------------------
+
+	2、如果是复制的内容来自页面元素div、p之类的，copy对象可直接使用如下方式， 当然也可使用上面的方式：
+
+		copy: $('#mytext').text(); 或者 copy: $('#mytext').html();
+		.text()方法：只会获取容器里的静态内容，获其他标签内的静态内容，不会获取到容器里输入文本框里的东西。
+		.html()方法：只会获取容器里的静态内容和所有标签，也不会获取到容器里输入文本框里的东西。
+	*/
 	$('.copyTemplate').zclip({ 
         path:'./ZeroClipboard.swf', 
         copy:function(){
