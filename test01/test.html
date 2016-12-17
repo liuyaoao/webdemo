@@ -12,8 +12,7 @@
 	function getLocation(){
 	  if (navigator.geolocation){
 	    navigator.geolocation.getCurrentPosition(showPosition);
-	  }
-	  else{
+	  }else{
 	  	x.innerHTML="该浏览器不支持获取地理位置。";
 	  }
 	}
@@ -21,7 +20,6 @@
 	  x.innerHTML="Latitude: " + position.coords.latitude +
 	  "<br>Longitude: " + position.coords.longitude;
 	}
-
 
 	$(function(){
     var circle = document.createElement('circle');
