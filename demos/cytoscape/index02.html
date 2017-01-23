@@ -39,12 +39,10 @@
 
       boxSelectionEnabled: false,
       autounselectify: true,
-
       layout: {
         name: 'grid',
         cols: 3
       },
-
       style: [
         {
           selector: 'node',
@@ -52,6 +50,9 @@
             'height': 40,
             'width': 40,
             'background-color': '#ccc',
+            'background-image':'./images/application.png',
+            'selection-box-color':'#932',
+            'background-fit':'cover',
             'label': 'data(label)'
           }
         },
@@ -63,148 +64,48 @@
             'width': 3,
             'line-color': '#ccc'
           }
-        },
+        }],
+        elements: [
+          { data: { label: 'top left' }, classes: 'top-left' }
+        ]
 
-        {
-          selector: '.top-left',
-          style: {
-            'text-valign': 'top',
-            'text-halign': 'left'
-          }
-        },
 
-        {
-          selector: '.top-center',
-          style: {
-            'text-valign': 'top',
-            'text-halign': 'center'
-          }
-        },
+    });
+    cy.on('tap', function(event){ //在整个图形上加个点击事件。
+      // cyTarget holds a reference to the originator
+      // of the event (core or element)
+      var evtTarget = event.cyTarget;
 
-        {
-          selector: '.top-right',
-          style: {
-            'text-valign': 'top',
-            'text-halign': 'right'
-          }
-        },
-
-        {
-          selector: '.center-left',
-          style: {
-            'text-valign': 'center',
-            'text-halign': 'left'
-          }
-        },
-
-        {
-          selector: '.center-center',
-          style: {
-            'text-valign': 'center',
-            'text-halign': 'center'
-          }
-        },
-
-        {
-          selector: '.center-right',
-          style: {
-            'text-valign': 'center',
-            'text-halign': 'right'
-          }
-        },
-
-        {
-          selector: '.bottom-left',
-          style: {
-            'text-valign': 'bottom',
-            'text-halign': 'left'
-          }
-        },
-
-        {
-          selector: '.bottom-center',
-          style: {
-            'text-valign': 'bottom',
-            'text-halign': 'center'
-          }
-        },
-
-        {
-          selector: '.bottom-right',
-          style: {
-            'text-valign': 'bottom',
-            'text-halign': 'right'
-          }
-        },
-
-        {
-          selector: '.multiline-manual',
-          style: {
-            'text-wrap': 'wrap'
-          }
-        },
-
-        {
-          selector: '.multiline-auto',
-          style: {
-            'text-wrap': 'wrap',
-            'text-max-width': 80
-          }
-        },
-
-        {
-          selector: '.autorotate',
-          style: {
-            'edge-text-rotation': 'autorotate'
-          }
-        },
-
-        {
-          selector: '.background',
-          style: {
-            'text-background-opacity': 1,
-            'text-background-color': '#ccc',
-            'text-background-shape': 'roundrectangle',
-            'text-border-color': '#000',
-            'text-border-width': 1,
-            'text-border-opacity': 1
-          }
-        },
-
-        {
-          selector: '.outline',
-          style: {
-            'text-outline-color': '#ccc',
-            'text-outline-width': 3
-          }
-        }
-      ],
-
-      elements: [
-        { data: { label: 'top left' }, classes: 'top-left' },
-        { data: { label: 'top center' }, classes: 'top-center' },
-        { data: { label: 'top right' }, classes: 'top-right' },
-
-        { data: { label: 'center left' }, classes: 'center-left' },
-        { data: { label: 'center center' }, classes: 'center-center' },
-        { data: { label: 'center right' }, classes: 'center-right' },
-
-        { data: { label: 'bottom left' }, classes: 'bottom-left' },
-        { data: { label: 'bottom center' }, classes: 'bottom-center' },
-        { data: { label: 'bottom right' }, classes: 'bottom-right' },
-
-        { data: { label: 'multiline manual\nfoo\nbar\nbaz' }, classes: 'multiline-manual' },
-        { data: { label: 'multiline auto foo bar baz' }, classes: 'multiline-auto' },
-        { data: { label: 'outline' }, classes: 'outline' },
-
-        { data: { id: 'ar-src' } },
-        { data: { id: 'ar-tgt' } },
-        { data: { source: 'ar-src', target: 'ar-tgt', label: 'autorotate (move my nodes)' }, classes: 'autorotate' },
-        { data: { label: 'background' }, classes: 'background' }
-      ]
+      if( evtTarget === cy ){  //在画布上鼠标的点击位置加一个节点。
+          console.log('tap on background',event);
+          addOneNode(cy,{x:event.cyPosition.x,y:event.cyPosition.y});
+      } else {
+        console.log('tap on some element');
+      }
+    });
+    cy.on('mouseover', 'node', function(evt){
+      var node = evt.cyTarget;
+      console.log( "mouse over event!!mouseover:" + node.id() );
+    });
+    cy.on('mouseout', 'node', function(evt){
+      var node = evt.cyTarget;
+      console.log( "mouse over event:" + node.id() );
     });
 
+
+
+
+
   });
+
+  function addOneNode(cy,position){ //新增一个节点。
+    cy.add({
+        group: "nodes",
+        data: { weight: 75,label:"helloworld" },
+        position: { x: position.x, y: position.y }
+    });
+  }
+
 </script>
 </head>
 
