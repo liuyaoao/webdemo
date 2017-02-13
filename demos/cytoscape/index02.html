@@ -39,6 +39,8 @@
 
       boxSelectionEnabled: false,
       autounselectify: true,
+      // zoom: 1,
+      // pan: { x: 100, y: 100 },
       layout: {
         name: 'grid',
         cols: 3
@@ -49,9 +51,10 @@
           style: {
             'height': 40,
             'width': 40,
-            'background-color': '#ccc',
-            'background-image':'./images/application.png',
-            'selection-box-color':'#932',
+            'shape' : 'rectangle',
+            'background-color': '#FFF',
+            'background-image':'./images/applications.png',
+            // 'selection-box-color':'#932',
             'background-fit':'cover',
             'label': 'data(label)'
           }
@@ -66,7 +69,8 @@
           }
         }],
         elements: [
-          { data: { label: 'top left' }, classes: 'top-left' }
+          { data: { label: 'top left' }, classes: 'top-left' },
+          { data: { label: 'hgffdgefds' }, classes: 'top-right' }
         ]
 
 
@@ -92,7 +96,15 @@
       console.log( "mouse over event:" + node.id() );
     });
 
-
+    // cy.center();
+    // cy.fit();
+    cy.zoom({
+      level: 2.0, // the zoom level
+      position: { x: 0, y: 0 }
+    });
+    setTimeout( function(){
+        cy.pan({ x: 0, y: 0 });
+    }, 1000 );
 
 
 
@@ -110,7 +122,7 @@
 </head>
 
 <body>
-<h1>Labels demo</h1>
+<h1>点击画布添加一个节点</h1>
 
 <div id="cy"></div>
 
