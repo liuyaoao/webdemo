@@ -255,7 +255,9 @@
     console.log("selectable:",cy.$("#ar-src").selectable());
     console.log("json config:",cy.json());
     // cy.autoungrabify(true); //设置节点是否可拖动位置。
-
+    cy.boxSelectionEnabled( true );
+    console.log("boxSelectionEnabled:",cy.boxSelectionEnabled());
+    cy.panningEnabled( false ); //设置或获取整体图形是否可拖动镜头
 
 
   });

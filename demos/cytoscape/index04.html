@@ -42,7 +42,7 @@
       boxSelectionEnabled: true,
       // autounselectify: true,
 
-      layout: {
+      layout: {      // 网格布局就是不管线是怎么连的，节点都按一行放置几个节点排列。
         name: 'grid',
         cols: 3
       },
@@ -217,9 +217,13 @@
     console.log("selectable:",cy.$("#ar-src").selectable());
     console.log("json config:",cy.json());
     // cy.autoungrabify(true); //设置节点是否不可拖动位置。
-    cy.center(cy.$("#ar-src")); //把选定节点放在图形正中间展示整个图形。
-    cy.center(); //把所有节点和边放在视野中间。
-   
+    // cy.center(cy.$("#ar-src")); //把选定节点放在图形正中间展示整个图形。
+    // cy.center(); //把所有节点和边放在视野中间。
+    cy.viewport({  //把视口放大缩小到多少倍，然后平移到某个位置。
+      zoom: 2,
+      pan: { x: 100, y: 100 }
+    });
+    console.log("cytoscape cy.extent():",cy.extent()); 
 
 
   });
