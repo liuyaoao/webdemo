@@ -14,13 +14,23 @@
   <script src="./context-menus/cytoscape-context-menus.js"></script>
  <!-- <script src="./extension/cytoscape-toolbar.js"></script> -->
 
-  <!-- 扩展排版方法一： -->
+  <!-- 扩展排版方法一：使每个节点尽量散开的随机排列。 -->
   <script src="./arbor/arbor.js"></script>
   <script src="./arbor/cytoscape-arbor.js"></script>
-  <!-- 扩展排版方法二： -->
-  <script src="https://cdn.rawgit.com/cpettitt/dagre/v0.7.4/dist/dagre.js"></script>
+
+  <!-- 扩展排版方法二：一般是树形排列。 -->
+  <script src="./dagre/dagre.js"></script>
   <script src="./dagre/cytoscape-dagre.js"></script>
 
+  <!-- 扩展排版方法三： -->
+  <script src="./spread/cytoscape-spread.js"></script>
+
+  <!-- 扩展排版方法四： -->
+  <script src="./cola/cola.js"></script>
+  <script src="./cola/cytoscape-cola.js"></script>
+  <!-- 扩展排版方法四： -->
+  <script src="./springy/springy.js"></script>
+  <script src="./springy/cytoscape-springy.js"></script>
 <style>
   body {
     font-family: helvetica, sans-serif;
@@ -200,6 +210,15 @@ console.log("json",dataObj);
     $("body").on('click','.arborLayoutBtn', function(){
       cy.layout({name:"arbor"});  //自定义的扩展的排版类型。
     });
+    $("body").on('click','.spreadLayoutBtn', function(){
+      cy.layout({name:"spread"});  //自定义的扩展的排版类型。//从中心想四周散开的排版。
+    });
+    $("body").on('click','.colaLayoutBtn', function(){
+      cy.layout({name:"cola"});  //自定义的扩展的排版类型。//
+    });
+    $("body").on('click','.springyLayoutBtn', function(){
+      cy.layout({name:"springy"});  //自定义的扩展的排版类型。//
+    });
 
   });
 
@@ -208,9 +227,11 @@ console.log("json",dataObj);
 
 <body>
 <div class="htmlContainer">
-  <h1>Labels demo</h1>
+  <span style="font-size:25px;">Labels demo</span>
   <input type="button" class="dagreLayoutBtn" value="排版(dagre)"/>  
   <input type="button" class="arborLayoutBtn" value="排版(arbor)"/>  
+  <input type="button" class="spreadLayoutBtn" value="排版(spread)"/>  
+  <input type="button" class="springyLayoutBtn" value="排版(springy)"/>  
 </div>
 
 
