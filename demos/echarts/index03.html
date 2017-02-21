@@ -7,10 +7,10 @@
 
     <script src="../../static/jquery2.1.3.js"></script>
 
-    <script src="./lib/esl.js"></script>
-    <!-- <script src="./lib/zrender.js"></script> -->
-    <!-- <script src="./lib/echarts.min.js"></script> -->
-    <!-- <script src="./lib/echarts-x.js"></script> -->
+    <!-- <script src="./lib/esl.js"></script> -->
+    <script src="./lib/zrender.js"></script>
+    <script src="./lib/echarts.min.js"></script>
+    <script src="./lib/echarts-x.js"></script>
     
 
     <style>
@@ -31,48 +31,25 @@
 
     <div id="main"></div>
     <script>
-      require.config({
-          paths:{
-              zrender:'./lib/zrender',
-              echarts:'./lib/echarts.min',
-              'echarts-x':'./lib/echarts-x',
-              'echarts/chart/pie':'./lib/echarts.min',
-              'echarts/component/dataRange':'./lib/echarts.min',
-              'echarts/component/legend':'./lib/echarts.min',
-              'echarts/component/grid':'./lib/echarts.min',
-              'echarts/component/tooltip':'./lib/echarts.min',
-              'echarts-x/chart/pie3d':'./lib/echarts.min'
-            },
-            packages: [
-                {
-                    main: 'echarts.min',
-                    location: './lib',
-                    name: 'echarts.min'
-                },
-                {
-                    main: 'zrender',
-                    location: './lib',
-                    name: 'zrender'
-                },
-                {
-                    main: 'echarts-x',
-                    location: './lib',
-                    name: 'echarts-x'
-                }
-            ]
-      });
+      // require.config({
+      //     paths:{
+      //         zrender:'./lib/zrender',
+      //         echarts:'./lib/echarts.min',
+      //         'echarts-x':'./lib/echarts-x',
+      //         'echarts/chart/pie':'./lib/echarts.min',
+      //         'echarts/component/dataRange':'./lib/echarts.min',
+      //         'echarts-x/chart/pie3d':'./lib/echarts.min'
+      //       }
+      // });
 
-      require([
-          'zrender',
-          'echarts',
-          'echarts/chart/pie',
-          'echarts/component/dataRange',
-          'echarts/component/legend',
-          'echarts/component/grid',
-          'echarts/component/tooltip',
-          'echarts-x',
-          'echarts-x/chart/pie3d'
-      ], function (zrender,echarts) {
+      // require([
+      //     'zrender',
+      //     'echarts',
+      //     'echarts/chart/pie',
+      //     'echarts/component/dataRange',
+      //     'echarts-x',
+      //     'echarts-x/chart/pie3d'
+      // ], function (zrender,echarts) {
 
           var chart = echarts.init(document.getElementById('main'));
           var option = {
@@ -93,7 +70,7 @@
             series : [
                 {
                     name: '访问来源',
-                    type: 'pie',
+                    type: 'pie3d',
                     radius : '55%',
                     center: ['50%', '60%'],
                     data:[
@@ -114,7 +91,7 @@
             ]
         };
         chart.setOption(option);
-      });
+      // });
     </script>
   </body>
 </html>
