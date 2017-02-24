@@ -215,6 +215,110 @@
           }
         },
         {
+          selector:'.img_servers',
+          style:{
+            'shape' : 'rectangle',
+            'background-image':'./images/servers.png',
+            'background-fit':'contain'
+          }
+        },
+        {
+          selector:'.img_application',
+          style:{
+            'shape' : 'rectangle',
+            'background-image':'./images/application.png',
+            'background-fit':'contain'
+          }
+        },
+        {
+          selector:'.img_applications',
+          style:{
+            'shape' : 'rectangle',
+            'background-image':'./images/applications.png',
+            'background-fit':'contain'
+          }
+        },
+        {
+          selector:'.img_database',
+          style:{
+            'shape' : 'rectangle',
+            'background-image':'./images/database.png',
+            'background-fit':'contain'
+          }
+        },
+        {
+          selector:'.img_earth',
+          style:{
+            'shape' : 'rectangle',
+            'background-image':'./images/earth.png',
+            'background-fit':'contain'
+          }
+        },
+        {
+          selector:'.img_equipment',
+          style:{
+            'shape' : 'rectangle',
+            'background-image':'./images/equipment.png',
+            'background-fit':'contain'
+          }
+        },
+        {
+          selector:'.img_firewall',
+          style:{
+            'shape' : 'rectangle',
+            'background-image':'./images/firewall.png',
+            'background-fit':'contain'
+          }
+        },
+        {
+          selector:'.img_middleware',
+          style:{
+            'shape' : 'rectangle',
+            'background-image':'./images/middleware.png',
+            'background-fit':'contain'
+          }
+        },
+        {
+          selector:'.img_network',
+          style:{
+            'shape' : 'rectangle',
+            'background-image':'./images/network.png',
+            'background-fit':'contain'
+          }
+        },
+        {
+          selector:'.img_storage',
+          style:{
+            'shape' : 'rectangle',
+            'background-image':'./images/storage.png',
+            'background-fit':'contain'
+          }
+        },
+        {
+          selector:'.img_virtualmachine',
+          style:{
+            'shape' : 'rectangle',
+            'background-image':'./images/virtualmachine.png',
+            'background-fit':'contain'
+          }
+        },
+        {
+          selector:'.img_website',
+          style:{
+            'shape' : 'rectangle',
+            'background-image':'./images/website.png',
+            'background-fit':'contain'
+          }
+        },
+        {
+          selector:'.img_wirelessnetwork',
+          style:{
+            'shape' : 'rectangle',
+            'background-image':'./images/wirelessnetwork.png',
+            'background-fit':'contain'
+          }
+        },
+        {
           selector:'#ar-src',
           style:{
             'width':40,
@@ -222,7 +326,7 @@
             'shape' : 'rectangle',
             'background-color': '#FFF',
             'background-image':'./images/applications.png',
-            'background-fit':'cover'
+            'background-fit':'contain'
           }
         }
       ],
@@ -232,20 +336,20 @@
         { data: { label: 'top center' }, classes: 'top-center' },
         { data: { label: 'top right' }, classes: 'top-right' },
 
-        { data: { label: 'center left' }, classes: 'center-left' },
-        { data: { label: 'center center' }, classes: 'center-center' },
-        { data: { label: 'center right' }, classes: 'center-right' },
+        { data: { label: 'center left' }, classes: 'center-left img_firewall' },
+        { data: { label: 'center center' }, classes: 'center-center img_virtualmachine' },
+        { data: { label: 'center right' }, classes: 'center-right img_equipment' },
 
-        { data: { label: 'bottom left' }, classes: 'bottom-left' },
-        { data: { label: 'bottom center' }, classes: 'bottom-center' },
-        { data: { label: 'bottom right' }, classes: 'bottom-right' },
+        { data: { label: 'bottom left' }, classes: 'bottom-left img_middleware' },
+        { data: { label: 'bottom center' }, classes: 'bottom-center img_storage' },
+        { data: { label: 'bottom right' }, classes: 'bottom-right img_network' },
 
         { data: { label: 'multiline manual\nfoo\nbar\nbaz' }, classes: 'multiline-manual' },
-        { data: { label: 'multiline auto foo bar baz' }, classes: 'multiline-auto' },
-        { data: { label: 'outline' }, classes: 'outline' },
+        { data: { label: 'multiline auto foo bar baz' }, classes: 'multiline-auto img_servers' },
+        { data: { label: 'outline' }, classes: 'outline img_wirelessnetwork' },
 
         { data: { id: 'ar-src' ,label:'source',classes:'top-center'} },
-        { data: { id: 'ar-tgt' ,label:'target',classes:'top-center'} },
+        { data: { id: 'ar-tgt' ,label:'target',classes:'top-center img_network'} },
         { data: { source: 'ar-src', target: 'ar-tgt', label: 'autorotate (move my nodes)' }, classes: 'autorotate' },
         { data: { label: 'background' }, classes: 'background' }
       ]

@@ -4,10 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>网络图形工具Cytoscape.js</title>
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+<link href="./extension/UI/jquery.qtip.css" rel="stylesheet" type="text/css" />
 
 <script src="../../static/jquery2.1.3.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/ocanvas/2.8.4/ocanvas.min.js"></script>
 <script src="../../static/cytoscape.js"></script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/ocanvas/2.8.4/ocanvas.min.js"></script>
+  <!-- tips UI extensions. -->
+  <script src="./extension/UI/jquery.qtip.js"></script>
+  <!-- 这些扩展一定要放在cytoscape.js后面再引入 -->
+  <script src="./extension/UI/cytoscape-qtip.js"></script>
+
+
 
 <!-- for testing with local version of cytoscape.js -->
 <!--<script src="../cytoscape.js/build/cytoscape.js"></script>-->
@@ -16,14 +24,19 @@
   body {
     font-family: helvetica, sans-serif;
     font-size: 14px;
+    width: 100%;
+        height: 100%;
+        position: absolute;
+        padding: 0;
+        margin: 0;
   }
 
   #cy {
+    width: 100%;
+    height: 100%;
     position: absolute;
     left: 0;
     top: 0;
-    right: 0;
-    bottom: 0;
     z-index: 999;
   }
 
@@ -225,7 +238,41 @@
     });
     console.log("cytoscape cy.extent():",cy.extent()); 
 
+    
 
+
+  });
+  $(function(){
+      var qtipOptions = {
+        content: {
+            text:'<span style="color:red;font-weight:600;">Example qTip on ele</span>',
+            title:''
+        },
+        show:{
+          event:'mouseover'
+        },
+        hide:{
+          event:'mouseout'
+        },
+        position: {
+          // adjust:{cyViewport:true},
+          my: 'top center',
+          at: 'bottom center'
+        },
+        style: {
+          classes: 'qtip-bootstrap',
+          tip: {
+            width: 16,
+            height: 8
+          }
+        }
+      };
+      
+      setTimeout(function(){
+        cy.nodes().qtip(qtipOptions);
+        cy.edges().qtip(qtipOptions);  
+      },500);
+      
   });
 </script>
 </head>

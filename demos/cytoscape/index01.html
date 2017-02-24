@@ -5,12 +5,14 @@
 <title>复杂网络图形工具Cytoscape.js</title>
 
 <link href="./context-menus/cytoscape-context-menus.css" rel="stylesheet" type="text/css" />
+<link href="./extension/UI/jquery.qtip.css" rel="stylesheet" type="text/css" />
 <!-- <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1"> -->
 <script type="text/javascript" src="../../static/jquery2.1.3.js"></script>
-<script src="../../static/cytoscape.js"></script>
+
  <script src="./edgehandles/cytoscape-edgehandles.js"></script>
 
  <script src="json_parse.js"></script>
+ <script src="../../static/cytoscape.js"></script>
   <script src="./context-menus/cytoscape-context-menus.js"></script>
  <!-- <script src="./extension/cytoscape-toolbar.js"></script> -->
 
@@ -31,18 +33,28 @@
   <!-- 扩展排版方法四： -->
   <script src="./springy/springy.js"></script>
   <script src="./springy/cytoscape-springy.js"></script>
+
+  <!-- tips UI extensions. -->
+  <script src="./extension/UI/jquery.qtip.js"></script>
+  <script src="./extension/UI/cytoscape-qtip.js"></script>
+  
 <style>
   body {
     font-family: helvetica, sans-serif;
     font-size: 14px;
+    width: 100%;
+        height: 100%;
+        position: absolute;
+        padding: 0;
+        margin: 0;
   }
 
   #cy {
+    width: 100%;
+    height: 100%;
     position: absolute;
     left: 0;
     top: 0;
-    right: 0;
-    bottom: 0;
     z-index: 999;
   }
   .htmlContainer{
@@ -123,7 +135,7 @@ console.log("json",dataObj);
       }
     };
 
-    cy.edgehandles( defaults ); //手动连线。
+    cy.edgehandles( defaults ); //可手动连线的扩展插件方法。
 
     var selectAllOfTheSameType = function(ele) {
         cy.elements().unselect();
@@ -203,7 +215,34 @@ console.log("json",dataObj);
     
   });
   $(function(){
+    var qtipOptions = {
+        content: {
+            text:'<span style="color:red;font-weight:600;">Example qTip on ele</span>',
+            title:''
+        },
+        show:{
+          event:'mouseover'
+        },
+        hide:{
+          event:'mouseout'
+        },
+        position: {
+          adjust:{cyViewport:true},
+          my: 'top center',
+          at: 'bottom center'
+        },
+        style: {
+          classes: 'qtip-bootstrap',
+          tip: {
+            width: 16,
+            height: 8
+          }
+        }
+      };
 
+    setTimeout(function(){
+        cy.elements().qtip(qtipOptions);
+      },500);
     $("body").on('click','.dagreLayoutBtn', function(){
       cy.layout({name:"dagre"});  //自定义的扩展的排版类型。
     });
