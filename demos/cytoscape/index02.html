@@ -37,8 +37,8 @@
     var cy = window.cy = cytoscape({
       container: document.getElementById('cy'),
 
-      boxSelectionEnabled: false,
-      autounselectify: true,
+      // boxSelectionEnabled: false,
+      // autounselectify: true,
       // zoom: 1,
       // pan: { x: 100, y: 100 },
       layout: {
@@ -67,7 +67,40 @@
             'width': 3,
             'line-color': '#ccc'
           }
-        }],
+        },
+        {
+          selector: 'node:selected',
+          style: {
+            'background-color': 'red'
+          }
+        },
+        {
+          selector:'.img_good',
+          style:{
+            width:20,
+            height:20,
+            'shape' : 'rectangle',
+            'background-image':'./images/good.png',
+            'background-fit':'contain'
+          }
+        },
+        {
+          selector:'.img_error',
+          style:{
+            width:20,
+            height:20,
+            'background-blacken':-1,
+            'background-opacity':0,
+            'shape' : 'ellipse',
+            padding:-10,
+            'background-image':'./images/error.png',
+            'overlay-opacity':0,
+            'overlay-color':'#fff',
+            'overlay-padding':0,
+            'background-fit':'contain'
+          }
+        }
+        ],
         elements: [
           { data: { label: 'top left' }, classes: 'top-left' },
           { data: { label: 'hgffdgefds' }, classes: 'top-right' }
@@ -87,13 +120,34 @@
         console.log('tap on some element');
       }
     });
-    cy.on('mouseover', 'node', function(evt){
+    cy.on('drag', 'node.main_node', function(evt){
       var node = evt.cyTarget;
-      console.log( "mouse over event!!mouseover:" + node.id() );
+      // console.log( "mouse over event!!drag:",evt );
+      var index = node.id().split('_')[1];
+      cy.$('#icon_'+index).position({
+        x:node._private.position.x+35,
+        y:node._private.position.y+35
+      });
     });
-    cy.on('mouseout', 'node', function(evt){
+    cy.on('unselect', 'node.main_node', function(evt){
       var node = evt.cyTarget;
-      console.log( "mouse over event:" + node.id() );
+      var index = node.id().split('_')[1];
+      // cy.$('#icon_'+index).unselect();
+      console.log( "mouse over event!!unselect:" + node.id() );
+    });
+    cy.on('mousedown', 'node.main_node', function(evt){
+      var node = evt.cyTarget;
+      var index = node.id().split('_')[1];
+      // cy.$('#icon_'+index).grabify();
+      // cy.$('#icon_'+index).select();
+      console.log( "mouse over event!!mousedown:" + node.id() );
+    });
+    cy.on('mouseup', 'node.main_node', function(evt){
+      var node = evt.cyTarget;
+      var index = node.id().split('_')[1];
+      // cy.$('#icon_'+index).ungrabify();
+      // cy.$('#icon_'+index).unselect();
+      console.log( "mouse over event:mouseup:" + node.id() );
     });
 
     // cy.center();
@@ -109,13 +163,24 @@
 
 
   });
-
+  var index = 0;
   function addOneNode(cy,position){ //新增一个节点。
-    cy.add({
+    index++;
+    cy.add([{
         group: "nodes",
-        data: { weight: 75,label:"helloworld" },
-        position: { x: position.x, y: position.y }
-    });
+        data: {id:'node_'+index, weight: 75,label:"helloworld" },
+        position: { x: position.x, y: position.y },
+        classes:'main_node'
+    },
+    {
+      group: "nodes",
+        data: {id:'icon_'+index, weight: 70 },
+        position: { x: position.x+35, y: position.y+35 },
+        selectable: false, 
+        grabbable: false, 
+        classes:'img_good'
+    }
+    ]);
   }
 
 </script>

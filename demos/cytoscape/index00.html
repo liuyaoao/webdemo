@@ -351,14 +351,17 @@
         { data: { id: 'ar-src' ,label:'source',classes:'top-center'} },
         { data: { id: 'ar-tgt' ,label:'target',classes:'top-center img_network'} },
         { data: { source: 'ar-src', target: 'ar-tgt', label: 'autorotate (move my nodes)' }, classes: 'autorotate' },
-        { data: { label: 'background' }, classes: 'background' }
+        { data: { label: 'background' }, classes: 'background' },
+        { data: { id:'n_icon1' }, classes: 'background' },
+        { data: { id:'n_icon2' }, classes: 'background' }
+
       ]
     });
 
     // cy.$("#ar-src").selectify();
     console.log("selectable:",cy.$("#ar-src").selectable());
     console.log("json config:",cy.json());
-    // cy.autoungrabify(true); //设置节点是否可拖动位置。
+    // cy.autoungrabify(true); //设置节点是否可拖动位置。 
     cy.boxSelectionEnabled( true );
     console.log("boxSelectionEnabled:",cy.boxSelectionEnabled());
     cy.panningEnabled( false ); //设置或获取整体图形是否可拖动镜头

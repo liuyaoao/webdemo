@@ -48,10 +48,10 @@
      motionBlurOpacity: 0.2,
      selectionType :'single',//'additive', 'single', //鼠标左键支持多选还是单选。
 
-      layout: {
-          name: 'grid',
-          cols: 3
-      },
+      // layout: {
+      //     name: 'grid',
+      //     cols: 3
+      // },
 
     style: [
         {
@@ -101,6 +101,7 @@
         {
           selector: '.top-right',
           style: {
+            
             'text-valign': 'top',
             'text-halign': 'right'
           }
@@ -194,15 +195,32 @@
             'text-outline-color': '#ccc',
             'text-outline-width': 3
           }
+        },
+        {
+          selector:'.background_red',
+          style:{
+            width:20,
+            height:20,
+            'background-color':'red'
+          }
+        },
+        {
+          selector:'.background_green',
+          style:{
+            width:20,
+            height:20,
+            padding :60,
+            'background-color':'green'
+          }
         }
       ],
 
       elements: [
-        { data: { label: 'top left' }, classes: 'top-left' },
-        { data: { label: 'top center' }, classes: 'top-center' },
-        { data: { label: 'top right' }, classes: 'top-right' },
+        { data: { label: 'top left',parent:'ar-src' }, classes: 'top-left' },
+        { data: {id:'n1',parent:'n2' }, classes: 'background_green' },
+        { data: {id:'n2', label: 'top right'}, classes: 'top-right' },
 
-        { data: { label: 'center left' }, classes: 'center-left' },
+        { data: {id:'n3', parent:'n2' }, classes: 'background_red'},
         { data: { label: 'center center' }, classes: 'center-center' },
         { data: { label: 'center right' }, classes: 'center-right' },
 
