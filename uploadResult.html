@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>解析单图片上传后端返回的结果</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" charset="utf-8">
+        window.onload=function(){
+            //获取url中的参数
+             function getUrlParam(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                if (r != null) return unescape(r[2]); return ""; //返回参数值
+            }
+            function getHrefParamByKey(paramKey){
+            var result = '';
+            var tempStr = location.href;
+            if(tempStr.indexOf('?') == -1){return '';}
+            var paramsArr = tempStr.split("?")[1].split("&");
+            for(var i=0;i<paramsArr.length;i++){
+                var key = paramsArr[i].split("=")[0];
+                var value = paramsArr[i].split("=")[1];
+                if(key == paramKey){
+                    result = value;
+                    break;
+                }
+            }
+            return decodeURIComponent(result);
+        }
+
+            var result = getHrefParamByKey('result');
+            console.log("获取到了url后面的result结果:",result);
+            document.body.appendChild(document.createTextNode(result || ''));
+        }
+
+    </script>
+</head>
+
+<body></body>
+</html>
