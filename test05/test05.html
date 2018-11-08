@@ -22,31 +22,19 @@
 		<script type="text/javascript" src="../static/jquery2.1.3.js"></script>
 		<script type="text/javascript">
 			$(function(){
-	        	var str = 'a';
-	        	var arr = [];
-	        	var obj = {};
-	            if([]== false){
-	            str += 'b';
-	            }
-	            if(arr){
-	            	str += "d";
-	            }
-	            if({} == false){
-	            	str += "e";
-	            }
-	            if(![]) str += 'c';
-	            console.log(str) ;
-
-	            var eles = document.querySelectorAll("[type=radio][name=title1]");
-	            for(var i=0,len=eles.length;i<len;i++){
-	            	if((eles[i]).checked){
-	            		console.log("选中了第"+(+i+1)+"个");
-	            	}
-	            }
-	            var str6 = "e,f,s,g,t,b,a";
-	            var arr6 = str6.split(",");
-	            arr6.reverse();
-	            console.log("反转带逗号的字符串："+arr6.join(","));
+	        	var arr = [1,2,3,2,1,5,5,4];
+						function tempFun (arr){
+							var tempArr=[];
+							var tempObj={};
+							for(var i=0;i<arr.length;i++){
+								if(!tempObj[arr[i]]){
+									tempArr.push(arr[i]);
+									tempObj[arr[i]] = true;
+								}
+							}
+							return tempArr;
+						}
+						console.log(tempFun(arr).sort());
 	        });
 		</script>
 	</head>
