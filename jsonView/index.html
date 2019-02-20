@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="HandheldFriendly" content="true">
+    <!-- windows phone 点击无高光 -->
+    <!-- <meta name="msapplication-tap-highlight" content="no"> -->
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- QQ浏览器私有全屏模式 -->
+    <meta name="x5-fullscreen" content="true">
+    <meta name="full-screen" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <title>json-viewer</title>
+    <script type="text/javascript" src="./static/jquery2.1.3.js"></script>
+    <!-- <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script> -->
+    <style type="text/css">
+    	.rolesPanel_0{
+    		position:absolute;
+    　　		top:10%;
+    　　		margin:;
+    		width: 90%;
+    		height:auto;
+    		/*background-image: url("1.jpg");
+    		background-attachment: scroll;
+    		background-repeat:no-repeat;
+    		background-position: center;*/
+    	}
+    	.rolesPanel{
+    	    position: absolute;
+    	    left: 50%;
+    	    top: 50%;
+    	    margin-left: -5rem;
+    	    margin-top:-10rem;
+    	    width: 10rem;
+    	    height: 20rem;
+    	    border: .1rem dotted #96c5fa;
+    		border-radius: .1333rem;
+    	}
+    	.abc{
+    		width:100%;
+    		height:1000px;
+    	}
+    	.fixedpanel{
+    		position: fixed;
+    	    left: 0;
+    	    top: 0;
+    	    width:100%;
+    	    background: green;
+    	    opacity: 0.7;
+    	}
+    </style>
+</head>
+<body>
+
+
+
+
+    <script type="text/javascript">
+    	$(function(){
+    		$('body').height(document.documentElement.clientHeight+150);
+    		$('.fixedpanel').height(document.documentElement.clientHeight);
+    		$(window).resize(function(){
+
+    			$('.fixedpanel').height(document.documentElement.clientHeight);
+
+    	    });
+
+
+    </script>
+
+</body>
+</html>
